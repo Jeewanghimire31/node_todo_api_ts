@@ -1,11 +1,11 @@
 import {Router} from "express";
 
 import {
-//     createTodo,
-//     deleteTodoById,
-//     getTodoById,
-    getTodos,
-//     updateTodo,
+    getTodos, 
+    postTodo,
+    getTodoById,
+    deleteTodo,
+    updateTodo,
 } from "../controller/todo.controller";
 
 const router = Router();
@@ -13,11 +13,13 @@ const router = Router();
 
 router.get("/", getTodos);
 
-router.get("/:id");
+router.get("/:id", getTodoById);
 
-router.delete("/:id");
+router.post("/", postTodo);
 
-router.post("/create");
+router.put("/:id", updateTodo)
+
+router.delete("/:id", deleteTodo);
 
 router.put("/update/:id");
 
