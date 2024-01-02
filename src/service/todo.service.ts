@@ -14,6 +14,7 @@ class TodoService {
     return await Todo.find();
   }
   async getTodosById(id: string) {
+    // If id undefined=>firstRow
     return Todo.findOne({
       where: {
         id: id,
@@ -28,17 +29,17 @@ class TodoService {
       isCompleted: body.isCompleted,
     }).save();
   }
-  async updateTodo(body: ITodo) {
+  async updateTodo(id: string, body: ITodo) {
     const todo = await this.getTodosById(body.id);
     if (!todo) {
       throw new Error("Todo not found!");
     }
     // Update the existing todo with the new values
+    console.log("hello", todo, body);
     todo.task = body.task;
     todo.isCompleted = body.isCompleted;
     // Save the updated todo
-    await todo.save();
-    return todo;
+    return await todo.save();
   }
 
   async deleteTodo(id: string) {

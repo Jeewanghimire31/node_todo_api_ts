@@ -31,9 +31,10 @@ export const postTodo = async (req: Request, res: Response) => {
   });
 };
 export const updateTodo = async (req: Request, res: Response) => {
+  const { id } = req.params;
   const body = req.body;
   console.log(body);
-  const response = await TodoService.updateTodo(body);
+  const response = await TodoService.updateTodo(id, body);
   res.send({
     success: true,
     message: "Blog updated successfully",
@@ -41,13 +42,12 @@ export const updateTodo = async (req: Request, res: Response) => {
   });
 };
 
-
 export const deleteTodo = async (req: Request, res: Response) => {
-    const { id } = req.params;
-    const data = await TodoService.deleteTodo(id);
-    res.send({
-      success: true,
-      message: "Todos fetched successfully",
-      data,
-    });
-  };
+  const { id } = req.params;
+  const data = await TodoService.deleteTodo(id);
+  res.send({
+    success: true,
+    message: "Todos fetched successfully",
+    data,
+  });
+};

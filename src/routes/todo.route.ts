@@ -7,9 +7,11 @@ import {
     deleteTodo,
     updateTodo,
 } from "../controller/todo.controller";
+import { authenticateUser } from "../middleware/auth.middleware";
 
 const router = Router();
 
+// router.use(authenticateUser);
 
 router.get("/", getTodos);
 
@@ -20,8 +22,6 @@ router.post("/", postTodo);
 router.put("/:id", updateTodo)
 
 router.delete("/:id", deleteTodo);
-
-router.put("/update/:id");
 
 
 export default router; 
