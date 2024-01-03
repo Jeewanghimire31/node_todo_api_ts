@@ -1,9 +1,7 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { Todo as TodoInterface } from "../interfaces/todo.interface";
-
 
 @Entity()
-export class Todo extends BaseEntity implements TodoInterface{
+export class Todo extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
